@@ -6,5 +6,22 @@
 {% block content %}
     <h1>{{ profile.name }}</h1>
     <p>{{ profile.description }}</p>
-   
+  {% if user == profile.user %}
+           <p>
+               <a href="{% url 'edit_thing' slug=thing.slug %}">
+                   Edit me!
+               </a>
+           </p>
+       {% endif %}
+
+   {% if restaurants %}
+   <ul>
+   		{% for restaurant in restaurants %}
+   		<li>
+   				<h1>{{ restaurant.name }}</h1>
+       <p>{{ restaurant.description }}</p>
+   	 </li>
+  	 {% endfor %}
+   </ul>
+    {% endif %}
 {% endblock content %}
